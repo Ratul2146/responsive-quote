@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="quotebox">
+        <h2>quote of the day</h2>
+        <p id="content">loading</p>
+        <span class="span id">loading</span>
+        <div class="btn-lol">
+            <button class="btn" onclick="getQuote(api_url)">New Quote</button>
+            <button class="btn btn1">
+                <img id="img" src="download.png" alt=""><span>Tweet
+
+                </span>
+            </button>
+        </div>
+
+    </div>
+    <script>
+        const api_url = 'https://api.quotable.io/random'
+
+        async function getQuote(url) {
+            const response = await fetch(url);
+            let data = await response.json()
+            
+            console.log(data);
+            author.innerHTML = data.author
+            quote.innerHTML = data.content
+        }
+        getQuote(api_url);
+
+        const quote = document.querySelector('#content')
+        const author = document.querySelector('.id')
+
+
+    </script>
+</body>
+
+</html>
